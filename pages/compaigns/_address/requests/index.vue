@@ -34,10 +34,7 @@
       <el-table-column :label="$t('column_approve')">
         <template slot-scope="scope">
           <el-button
-            v-if="
-              !scope.row.complete &&
-              scope.row.approvalCount < approversCount / 2
-            "
+            v-if="!scope.row.complete"
             type="success"
             plain
             round
