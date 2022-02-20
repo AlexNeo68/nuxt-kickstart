@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.11;
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.6.8 <0.9.0;
 
 contract FactoryCompaign {
     address[] public deployedCompaigns;
@@ -24,7 +24,7 @@ contract Compaign {
         mapping(address => bool) approvals;
     }
 
-    uint numRequests;
+    uint public numRequests;
     mapping(uint => Request) public requests;
     
     uint public minContribution;
@@ -76,5 +76,19 @@ contract Compaign {
 
         payable(request.recipient).transfer(request.value);
         request.complete = true;
+    }
+
+    function getSummary() public view returns(uint, uint, uint, uint, address) {
+        return (
+            minContribution,
+            address(this).balance,
+            numRequests,
+            approversCount,
+            manager
+        );
+    }
+
+    function getRequestsCount() public view returns (uint) {
+        return numRequests;
     }
 }

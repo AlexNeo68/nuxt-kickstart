@@ -22,7 +22,6 @@ const deploy = async () => {
       .deploy({ data: compiledFactoryCompaign.evm.bytecode.object })
       .send({ from: account, gas: "5000000" });
 
-    console.log("ABI: ", JSON.stringify(compiledFactoryCompaign.abi));
     console.log("Contract address: ", result.options.address);
   } catch (e) {
     console.log(e);

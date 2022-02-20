@@ -1,7 +1,11 @@
 <template>
   <el-container>
-    <AppHeader />
-    <nuxt />
+    <el-header>
+      <AppHeader />
+    </el-header>
+    <el-main>
+      <nuxt />
+    </el-main>
   </el-container>
 </template>
 <script>
